@@ -51,7 +51,7 @@ fi
         case "$MODE" in
                         hello)
                 PAYLOAD=$( python3 -c 'import json, os; keys = []; data = {}; [data.__setitem__(key, os.environ.get(key.upper().replace("-", "_").replace(".", "_")) or os.environ.get(key.upper().replace("-", "_"))) for key in keys if (os.environ.get(key.upper().replace("-", "_").replace(".", "_")) or os.environ.get(key.upper().replace("-", "_")))]; print(json.dumps(data))')
-curl --connect-timeout 10 --max-time 60 --fail-with-body -sS -L "$ENDPOINT" "${COMMON_HEADERS[@]}" -H "Content-Type: application/json" -d "$PAYLOAD"
+curl --connect-timeout 10 --max-time 60 --fail-with-body -sS -L "$ENDPOINT" ${COMMON_HEADERS[@]+"${COMMON_HEADERS[@]}"} -H "Content-Type: application/json" -d "$PAYLOAD"
                   ;;
           *)
             echo "Unsupported mode: $MODE" >&2
