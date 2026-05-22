@@ -1,30 +1,28 @@
-        ---
-        name: hello-worker
-        description: "Wrap the hello-worker Cloudflare Worker as a skill+cli project. Returns 'Hello from Cloudflare Worker! 🚀'."
-        ---
+---
+name: hello-worker
+description: "当用户说"调用 hello-worker"、"hello-worker"、"请求 hello worker 接口"、"帮我测试 hello-worker"、"hello worker 返回什么" 时自动触发。调用公网 Cloudflare Worker，返回 Hello from Cloudflare Worker! 🚀。"
+---
 
-        # Hello Worker
+# Hello Worker
 
-        ## 作用
+## 作用
 
-        当用户希望把 `hello-worker` 作为一个真正的 skill 安装到 agent 环境里，并通过统一参数调用它时，使用这个 skill。
+调用 `https://hello-worker.hb67egcim4.workers.dev/`，返回 `Hello from Cloudflare Worker! 🚀`。
 
-        ## 安装
-
-        ```bash
-        bash <(curl -fsSL 'https://skill.vyibc.com/install-hello-worker.sh?ts=...')
-        ```
-
-        ## 核心执行入口
-
-        ```text
-        skills/hello-worker/scripts/run.sh
-        ```
-
-        安装后的 skill 和对外发布的 CLI 都来自这一个脚本。
-
-        ## 直接执行
+## 执行
 
 ```bash
-bash <(curl -fsSL https://skill.vyibc.com/hello-worker.sh) --mode=hello
+~/.claude/skills/hello-worker/scripts/run.sh --mode=hello
+```
+
+## 参数
+
+| 参数 | 必填 | 说明 |
+|------|------|------|
+| `--mode` | 是 | 固定传 `hello` |
+
+## 预期输出
+
+```
+Hello from Cloudflare Worker! 🚀
 ```
